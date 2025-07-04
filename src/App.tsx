@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AutoComplete, type Option } from "./components/autocompleter";
+import { AutoComplete } from "./components/autocompleter";
 import AiSelect, { type SelectProps } from "./components/ai-select";
 
 const FRAMEWORKS = [

@@ -10,8 +10,6 @@ import { Check } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
 import { cn } from "../lib/utils";
 
-export type Option = Record<"value" | "label", string> & Record<string, string>;
-
 type AutoCompleteProps = {
   options: string[];
   emptyMessage: string;
