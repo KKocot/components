@@ -3,7 +3,7 @@ import { AutoComplete } from "./components/autocompleter";
 import AiSelect, { type SelectProps } from "./components/ai-select";
 import clsx from "clsx";
 
-const POMPTS = [
+const PROMPTS = [
   "Help me write a blog post about React",
   "Create a TypeScript interface for a user model",
   "Generate unit tests for my API",
@@ -38,6 +38,10 @@ const getPlaceholder = (value: SelectProps) => {
       return "Search users...";
     case "userTopics":
       return "Username...";
+    case "tags":
+      return "Search tags...";
+    case "community":
+      return "Search community...";
     default:
       return "Search something...";
   }
@@ -48,8 +52,7 @@ function App() {
   const [secondValue, setSecondValue] = useState<string>("");
   const [selectValue, setSelectValue] = useState<SelectProps>("ai");
   const placeholder = getPlaceholder(selectValue);
-  console.log("value", value);
-  console.log("selectValue", selectValue);
+
   useEffect(() => {
     if (value.startsWith("/")) {
       setSelectValue("userTopics");
@@ -63,13 +66,25 @@ function App() {
       setSelectValue("users");
       setValue(value.slice(1));
     }
+    if (value.startsWith("#")) {
+      setSelectValue("tags");
+      setValue(value.slice(1));
+    }
+    if (value.startsWith("!")) {
+      setSelectValue("community");
+      setValue(value.slice(1));
+    }
   }, [value]);
   return (
     <div className="not-prose mt-8 flex flex-col gap-4 items-center">
       <div className="flex">
         <AiSelect value={selectValue} onValueChange={setSelectValue} />
         <AutoComplete
-          options={selectValue === "users" ? USERNAMES : POMPTS}
+          options={
+            selectValue === "users" || selectValue === "userTopics"
+              ? USERNAMES
+              : PROMPTS
+          }
           emptyMessage="No results."
           placeholder={placeholder}
           onValueChange={setValue}
@@ -82,7 +97,7 @@ function App() {
           <>
             <div className="h-8 border" />
             <AutoComplete
-              options={USERNAMES}
+              options={PROMPTS}
               emptyMessage="No results."
               placeholder="Search topic..."
               onValueChange={setSecondValue}

@@ -1,4 +1,4 @@
-import { Bot, Search, AtSign, Slash } from "lucide-react";
+import { Bot, Search, AtSign, Slash, Hash, PersonStanding } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -8,7 +8,13 @@ import {
   SelectValue,
 } from "./ui/select";
 
-export type SelectProps = "ai" | "classic" | "users" | "userTopics";
+export type SelectProps =
+  | "ai"
+  | "classic"
+  | "users"
+  | "userTopics"
+  | "tags"
+  | "community";
 
 const AiSelect = ({
   value,
@@ -25,7 +31,7 @@ const AiSelect = ({
       <SelectContent>
         <SelectGroup>
           <SelectItem value="ai">
-            <Bot className="h-4 w-4" />
+            <Bot />
           </SelectItem>
           <SelectItem value="classic">
             <Search />
@@ -35,6 +41,12 @@ const AiSelect = ({
           </SelectItem>
           <SelectItem value="userTopics">
             <Slash />
+          </SelectItem>
+          <SelectItem value="tags">
+            <Hash />
+          </SelectItem>
+          <SelectItem value="community">
+            <PersonStanding />
           </SelectItem>
         </SelectGroup>
       </SelectContent>
