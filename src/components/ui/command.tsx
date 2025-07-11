@@ -56,12 +56,21 @@ function CommandDialog({
   );
 }
 interface CommandInputProps
-  extends React.ComponentProps<typeof CommandPrimitive.Input> {}
-function CommandInput({ className, ...props }: CommandInputProps) {
+  extends React.ComponentProps<typeof CommandPrimitive.Input> {
+  containterClassName?: string;
+}
+function CommandInput({
+  className,
+  containterClassName,
+  ...props
+}: CommandInputProps) {
   return (
     <div
       data-slot="command-input-wrapper"
-      className="flex h-8 items-center gap-2 border-y border-r rounded-r-md px-3"
+      className={cn(
+        "flex h-8 items-center gap-2 border-y border-r rounded-r-md px-3",
+        containterClassName
+      )}
     >
       <CommandPrimitive.Input
         data-slot="command-input"

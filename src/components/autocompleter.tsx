@@ -17,6 +17,7 @@ type AutoCompleteProps = {
   onValueChange: (value: string) => void;
   isLoading?: boolean;
   disabled?: boolean;
+  className?: string;
   placeholder?: string;
 };
 
@@ -27,13 +28,13 @@ export const AutoComplete = ({
   value,
   onValueChange,
   disabled,
+  className,
   isLoading = false,
 }: AutoCompleteProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isOpen, setOpen] = useState(false);
   const [selected, setSelected] = useState<string>(value);
-  const [inputValue, setInputValue] = useState<string>(value);
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       const input = inputRef.current;
@@ -64,12 +65,12 @@ export const AutoComplete = ({
 
   const handleBlur = useCallback(() => {
     setOpen(false);
-    setInputValue(selected);
+    onValueChange(selected);
   }, [selected]);
 
   const handleSelectOption = useCallback(
     (selectedOption: string) => {
-      setInputValue(selectedOption);
+      onValueChange(selectedOption);
 
       setSelected(selectedOption);
       onValueChange(selectedOption);
@@ -88,13 +89,14 @@ export const AutoComplete = ({
       <div className="flex items-center">
         <CommandInput
           ref={inputRef}
-          value={inputValue}
-          onValueChange={isLoading ? undefined : setInputValue}
+          value={value}
+          onValueChange={isLoading ? undefined : onValueChange}
           onBlur={handleBlur}
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
           disabled={disabled}
           className="text-base"
+          containterClassName={className}
         />
       </div>
       <div className="relative mt-1">
