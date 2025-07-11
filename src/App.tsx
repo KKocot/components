@@ -62,6 +62,10 @@ function App() {
       setSelectValue("ai");
       setValue(value.slice(1));
     }
+    if (value.startsWith("$")) {
+      setSelectValue("classic");
+      setValue(value.slice(1));
+    }
     if (value.startsWith("@")) {
       setSelectValue("users");
       setValue(value.slice(1));
