@@ -90,7 +90,7 @@ function App() {
           onValueChange={setValue}
           value={value}
           className={clsx("", {
-            "border-r-1 rounded-none pr-0": selectValue === "userTopics",
+            "border-r-1 rounded-none pr-0 w-32": selectValue === "userTopics",
           })}
         />
         {selectValue === "userTopics" ? (
