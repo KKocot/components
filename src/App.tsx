@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AutoComplete } from "./components/autocompleter";
 import AiSelect, { type SelectProps } from "./components/ai-select";
 import clsx from "clsx";
+import { Slash } from "lucide-react";
 
 const PROMPTS = [
   "Help me write a blog post about React",
@@ -94,19 +95,19 @@ function App() {
           onValueChange={setValue}
           value={value}
           className={clsx("", {
-            "border-r-1 rounded-none pr-0 w-32": selectValue === "userTopics",
+            "rounded-none border-r-0 p-0 w-22": selectValue === "userTopics",
           })}
         />
         {selectValue === "userTopics" ? (
           <>
-            <div className="h-8 border" />
+            <Slash className="h-8 w-4 border-y" />
             <AutoComplete
               options={PROMPTS}
               emptyMessage="No results."
               placeholder="Search topic..."
               onValueChange={setSecondValue}
               value={secondValue}
-              className="pl-1"
+              className="pl-1 w-32"
             />
           </>
         ) : null}

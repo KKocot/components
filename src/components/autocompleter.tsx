@@ -127,13 +127,10 @@ export const AutoComplete = ({
                         event.stopPropagation();
                       }}
                       onSelect={() => handleSelectOption(option)}
-                      className={cn(
-                        "flex w-full items-center gap-2",
-                        !isSelected ? "pl-8" : null
-                      )}
+                      className="flex w-full items-center gap-2"
                     >
-                      {isSelected ? <Check className="w-4" /> : null}
                       {option}
+                      {isSelected ? <Check className="w-4" /> : null}
                     </CommandItem>
                   );
                 })}
