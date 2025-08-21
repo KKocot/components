@@ -108,7 +108,7 @@ function App() {
           onValueChange={setValue}
           value={value}
           className={clsx("", {
-            "rounded-none border-r-0 p-0 w-22": selectValue === "userTopics",
+            "rounded-none border-r-0 p-0 w-32": selectValue === "userTopics",
           })}
         />
         {selectValue === "userTopics" ? (
@@ -120,7 +120,7 @@ function App() {
               placeholder="Search topic..."
               onValueChange={setSecondValue}
               value={secondValue}
-              className="pl-1 w-32"
+              className="pl-1 w-38"
             />
           </>
         ) : null}
