@@ -3,32 +3,48 @@ import { AutoComplete } from "./components/autocompleter";
 import AiSelect, { type SelectProps } from "./components/ai-select";
 import clsx from "clsx";
 import { Slash } from "lucide-react";
+import { Separator } from "@radix-ui/react-select";
 
 const PROMPTS = [
-  "Help me write a blog post about React",
-  "Create a TypeScript interface for a user model",
-  "Generate unit tests for my API",
-  "Explain how to use React hooks",
-  "Debug my Redux state management",
-  "Optimize my React component performance",
-  "Write a custom React hook",
-  "Create a REST API endpoint",
-  "Implement user authentication",
-  "Design a database schema",
+  "denser as a new hive.blog frontend",
+  "how hive works",
+  "hivemind architecture",
+  "hivefest 2024 schedule",
+  "calculate vests to hive power",
+  "convert HIVE to HBD with Wax",
+  "delegate hive power with Wax",
+  "witness voting guide",
+  "resource credits explained",
+  "latest clive release",
+  "account recovery process",
+  "hive engine tokens list",
+  "curation reward strategy",
+  "power up vs power down",
+  "web3 social onboarding",
 ];
 const USERNAMES = [
-  "john_doe",
-  "jane_smith",
-  "alice_jones",
-  "bob_brown",
-  "charlie_black",
-  "dave_white",
-  "eve_green",
-  "frank_yellow",
-  "grace_purple",
-  "heidi_orange",
+  "gtg",
+  "blocktrades",
+  "barddev",
+  "guest4test",
+  "thebeedevs",
+  "small.minion",
+  "mtyszczak",
+  "fwaszkiewicz",
+  "itsola",
 ];
-
+const TAGS = [
+  "hive",
+  "blockchain",
+  "cryptocurrency",
+  "nft",
+  "dao",
+  "defi",
+  "web3",
+  "metaverse",
+  "social",
+  "community",
+];
 const getPlaceholder = (value: SelectProps) => {
   switch (value) {
     case "ai":
@@ -75,10 +91,6 @@ function App() {
       setSelectValue("tags");
       setValue(value.slice(1));
     }
-    if (value.startsWith("!")) {
-      setSelectValue("community");
-      setValue(value.slice(1));
-    }
   }, [value]);
   return (
     <div className="not-prose mt-8 flex flex-col gap-4 items-center">
@@ -88,6 +100,8 @@ function App() {
           options={
             selectValue === "users" || selectValue === "userTopics"
               ? USERNAMES
+              : selectValue === "tags"
+              ? TAGS
               : PROMPTS
           }
           emptyMessage="No results."
@@ -100,7 +114,7 @@ function App() {
         />
         {selectValue === "userTopics" ? (
           <>
-            <Slash className="h-8 w-4 border-y" />
+            <Separator className="w-[1px] h-8 bg-slate-400" />
             <AutoComplete
               options={PROMPTS}
               emptyMessage="No results."
