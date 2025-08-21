@@ -1,12 +1,4 @@
-import {
-  Bot,
-  Search,
-  AtSign,
-  Slash,
-  Hash,
-  PersonStanding,
-  UserPen,
-} from "lucide-react";
+import { Search, AtSign, Hash, UserPen } from "lucide-react";
 import {
   Select,
   SelectContent,

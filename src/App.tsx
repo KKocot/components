@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { AutoComplete } from "./components/autocompleter";
 import AiSelect, { type SelectProps } from "./components/ai-select";
 import clsx from "clsx";
-import { Slash } from "lucide-react";
 import { Separator } from "@radix-ui/react-select";
 
 const PROMPTS = [
