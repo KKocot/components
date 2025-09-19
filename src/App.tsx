@@ -5,21 +5,11 @@ import clsx from "clsx";
 import { Separator } from "@radix-ui/react-select";
 
 const PROMPTS = [
-  "denser as a new hive.blog frontend",
-  "how hive works",
-  "hivemind architecture",
-  "hivefest 2024 schedule",
-  "calculate vests to hive power",
-  "convert HIVE to HBD with Wax",
-  "delegate hive power with Wax",
-  "witness voting guide",
-  "resource credits explained",
-  "latest clive release",
-  "account recovery process",
-  "hive engine tokens list",
-  "curation reward strategy",
-  "power up vs power down",
-  "web3 social onboarding",
+  "Bukit Bintang food guide",
+  "Walk through Chinatown, Kuala Lumpur",
+  "Kuala Lumpur International Airport transit tips",
+  "Kuala Lumpur public library architecture",
+  "Food spots in Kuala Lumpur",
 ];
 const USERNAMES = [
   "gtg",
